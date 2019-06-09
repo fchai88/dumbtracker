@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dumbtracker": {
+    "hii-ng-forms2": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dumbtracker",
+            "outputPath": "dist/hii-ng-forms2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dumbtracker:build"
+            "browserTarget": "hii-ng-forms2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dumbtracker:build:production"
+              "browserTarget": "hii-ng-forms2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dumbtracker:build"
+            "browserTarget": "hii-ng-forms2:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "dumbtracker-e2e": {
+    "hii-ng-forms2-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "dumbtracker:serve"
+            "devServerTarget": "hii-ng-forms2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "dumbtracker:serve:production"
+              "devServerTarget": "hii-ng-forms2:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "dumbtracker"
+  "defaultProject": "hii-ng-forms2"
 }

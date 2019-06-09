@@ -1,0 +1,6 @@
+<div class="list-group">
+  <button type="button" class="list-group-item list-group-item-action" *ngFor="let workout of workouts; let i=index"
+    [ngClass]="{'active': workout.isActive}" (click)="activateClass(i)">
+    {{ workout.name }}
+  </button>
+</div>
