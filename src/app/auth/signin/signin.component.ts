@@ -46,4 +46,8 @@ export class SigninComponent implements OnInit {
     }
   }
 
+  onCloseErrorModal() {
+    this.errorMessage = "";
+  }
+
 }

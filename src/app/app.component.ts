@@ -18,5 +18,6 @@ export class AppComponent {
   constructor(private authService: AuthService, private router: Router) {  }
 
   ngOnInit() {
+    this.authService.autoLogin();
   }
 }

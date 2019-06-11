@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
-import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
 import { UserDetail } from '../models/user-detail.model';
 
@@ -10,7 +9,6 @@ import { UserDetail } from '../models/user-detail.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  user: User;
   userDetail: UserDetail;
   private userDetailSub: Subscription;
 
@@ -18,8 +16,15 @@ export class HomeComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    this.user = this.authService.getUser();
-    this.authService.getUserInfo(this.user.localId);
+    //obsolete code now that we are using BehaviorSubjects
+    // this.authService.userChanged.pipe(take(1)).subscribe(  //take() oerator allows you to get x number of values from subscription then auto unsubs
+    //   res => {
+    //     this.user = res;
+    //     console.log(this.user);
+    //     this.authService.getUserInfo(this.user.localId);
+    //   }
+    // );
+    this.authService.getUserInfo();
     this.userDetailSub = this.authService.userDetailChanged.subscribe(
       res => {
         this.userDetail = res;

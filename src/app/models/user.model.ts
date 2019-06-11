@@ -1,4 +1,5 @@
 export class User {
+  tok: any;
     constructor(
         public email: string, 
         public localId: string,

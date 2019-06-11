@@ -1,40 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
-import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { WorkoutsComponent } from './workouts/workouts.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './auth/services/auth-interceptor.service';
+
+import { WorkoutsModule } from './workouts/workouts.module';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     HomeComponent,
-    SignupComponent,
-    SigninComponent,
     NavbarComponent,
-    DropdownDirective,
-    WorkoutsComponent,
-    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    WorkoutsModule,
+    AuthModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -65,7 +65,6 @@ export class SignupComponent implements OnInit {
       this.authService.registerUser(this.Email.value, this.Password.value)
         .subscribe(
           res => {
-            this.isLoading = false;
             console.log(res);
             this.errorMessage = '';
             const userDemographics: Demographics = {
@@ -80,6 +79,7 @@ export class SignupComponent implements OnInit {
               userDemographics,
               userGoals).subscribe(
                 res => {
+                  this.isLoading = false;
                   this.authService.userDetailChanged.next(res);
                   this.router.navigate(['/home']);
                 }
