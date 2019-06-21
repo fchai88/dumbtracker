@@ -1,6 +1,21 @@
+<h1>Your Workouts</h1>
 <div class="list-group">
-  <button type="button" class="list-group-item list-group-item-action" *ngFor="let workout of workouts; let i=index"
-    [ngClass]="{'active': workout.isActive}" (click)="activateClass(i)">
-    {{ workout.name }}
-  </button>
+  <div *ngFor="let workout of workouts; let i=index">
+    <button type="button" class="list-group-item list-group-item-action" 
+      [ngClass]="{'active': workout.isActive}" (click)="activateClass(i)">
+      {{ workout.name }}
+    </button>
+    <div class="list-group-item workout-detail" *ngIf="workout.isActive">
+      <!-- <hr> -->
+      {{ workout.description }}
+      <div class="text-right">
+        <button class="btn btn-warning">Edit</button>
+        |
+        <button class="btn btn-danger" (click)="onDeleteWorkout(i)">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="text-right">
+    <button class="btn text-muted" (click)="isExpandNewWorkout = !isExpandNewWorkout">+ Add new workout</button>
+  </div>
 </div>

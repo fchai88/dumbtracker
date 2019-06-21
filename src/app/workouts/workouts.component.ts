@@ -7,21 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutsComponent implements OnInit {
   isAWorkoutSelected: boolean = false;
+  isExpandNewWorkout: boolean = false;
   workouts = [
     {
+      'id': '',
       'name': 'Chest Day',
+      'description': 'This is a my typical chest workout',
       'isActive': false
     },
     {
+      'id': '',
       'name': 'Leg Day',
+      'description': 'The best leg workout. When Im feeling like an extra strong pump',
       'isActive': false
     },
     {
+      'id': '',
       'name': 'Cardio',
+      'description': '',
       'isActive': false
     },
     {
+      'id': '',
       'name': 'Bis/Tris',
+      'description': 'Mixing both biceps and triceps',
       'isActive': false
     },];
 
@@ -36,10 +45,14 @@ export class WorkoutsComponent implements OnInit {
     for (let i = 0; i < this.workouts.length; i++) {
       const element = this.workouts[i];
       if (index == i) {
-        element.isActive = true;
+        element.isActive = element.isActive ? false : true;
       } else {
         element.isActive = false;
       }
     }
+  }
+
+  onDeleteWorkout(index: number) {
+    this.workouts.splice(index, 1);
   }
 }
